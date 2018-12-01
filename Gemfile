@@ -5,6 +5,7 @@ ruby '2.5.1'
 
 # gem installed
 gem 'bcrypt'
+gem 'omniauth-google-oauth2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
