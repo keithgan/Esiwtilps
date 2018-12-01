@@ -3,5 +3,7 @@ class User < ApplicationRecord
     has_secure_password
     has_many :groups, dependent: :destroy
 
-    validates :email, format: { with: VALID_EMAIL_REGEX}
+    validates :email, uniqueness: true, 
+                      length: { minimum: 2},
+                      format: { with: VALID_EMAIL_REGEX}
 end
