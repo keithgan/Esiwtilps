@@ -5,6 +5,7 @@ ruby '2.5.1'
 
 # gem installed
 gem 'bcrypt'
+gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'figaro'
 
