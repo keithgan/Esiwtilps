@@ -1,5 +1,9 @@
 class GroupsController < ApplicationController
     
+    def index
+        @groups = Group.all
+    end
+
     def show
         @group = Group.find(params[:id])
     end
@@ -10,7 +14,6 @@ class GroupsController < ApplicationController
     
     def create
         @group = Group.new(group_params)
-        @group.user_id = current_user.id
 
         if @group.save
             flash[:success] = "#{@group.name} successfully created!"

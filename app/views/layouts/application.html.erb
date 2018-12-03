@@ -45,6 +45,7 @@
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" <%= link_to t(".your_account"), user_path(current_user) %></a>
               <a class="dropdown-item" <%= link_to t(".create_a_group"), new_group_path %></a>
+              <a class="dropdown-item" <%= link_to t(".all_groups"), groups_path %></a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" <%= link_to t(".log_out"), logout_path, method: :delete %></a>
             </div>
