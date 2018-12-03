@@ -27,10 +27,10 @@ ActiveRecord::Schema.define(version: 2018_12_01_145632) do
 
   create_table "groups", force: :cascade do |t|
     t.string "name", null: false
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_groups_on_users_id"
+    t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,5 +43,5 @@ ActiveRecord::Schema.define(version: 2018_12_01_145632) do
   end
 
   add_foreign_key "authentications", "users"
-  add_foreign_key "groups", "users", column: "users_id"
+  add_foreign_key "groups", "users"
 end
