@@ -6,8 +6,6 @@ class FriendsController < ApplicationController
             friend = Friend.new(user_id: current_user.id, friends_with: @user.id)
             friend.save
             redirect "/user/#{@user.id}"
-        else
-            @message = "You are already friends with this user."
         end
     end
 
