@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+
+  post '/user/:id/befriend', to: 'friends#befriend', as: "befriend"
+  post '/user/:id/unfriend', to: 'friends#unfriend', as: "unfriend"
+
 end

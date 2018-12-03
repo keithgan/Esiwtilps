@@ -1,1 +1,17 @@
 <h1> Hello <%= @user.name %> </h1>
+
+<% if current_user.id != @user.id %>
+    <% if !Friend.find_by(user_id: current_user.id, friends_with: @user.id) %>
+        <%= form_with url: befriend_path, method: :post do |form| %>
+            <%= form.submit "Add friend" %>
+        <% end %>
+    <% else %>
+        <%= form_with url: unfriend_path, method: :post do |form| %>
+            <%= form.submit "Unfriend" %>
+        <% end %>
+    <% end %>
+<% end %>
+
+<p> Friends: <%= Friend.where(user_id: @user.id).count %> </p>
+
+<h2> Friends list </h2>
