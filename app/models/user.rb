@@ -3,7 +3,8 @@ class User < ApplicationRecord
     has_secure_password
     has_many :authentications, dependent: :destroy
     has_many :groups, dependent: :destroy
-
+    has_many :friends, dependent: :destroy
+    
     validates :email, uniqueness: true, 
                       length: { minimum: 2},
                       format: { with: VALID_EMAIL_REGEX}

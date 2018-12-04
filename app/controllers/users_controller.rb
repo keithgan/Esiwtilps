@@ -2,6 +2,8 @@ class UsersController < ApplicationController
     
     def show
         @user = User.find(params[:id])
+        @friends = Friend.where(user_id: current_user.id)
+        @groups = Group.all
     end
 
     def new

@@ -1,1 +1,41 @@
 <h1> Hello <%= @user.name %> </h1>
+
+<% if current_user.id != @user.id %>
+    <% if !Friend.find_by(user_id: current_user.id, friends_with: @user.id) %>
+        <%= form_with url: befriend_path, method: :post do |form| %>
+            <%= form.submit "Add friend" %>
+        <% end %>
+    <% else %>
+        <%= form_with url: unfriend_path, method: :post do |form| %>
+            <%= form.submit "Unfriend" %>
+        <% end %>
+    <% end %>
+<% end %>
+
+<p> Friends: <%= Friend.where(user_id: @user.id).count %> </p>
+
+<h2> Friends list </h2>
+
+<% @friends.each do |friend| %>
+    <div class = "d-inline-block">
+        <div class="card border-dark mb-4 mr-2" style="width: 18rem; text-align:center">
+                <div class="card-body">
+                    <h5 class="card-title"><%= User.find(friend.friends_with).name%></h5>
+                    <h5 class="card-title"></h5>
+                    <%= link_to 'View profile', user_path(friend.friends_with), class:"btn btn-primary" %>
+                </div>
+        </div>
+    </div>
+<% end %>
+
+<h2> Groups </h2>
+
+<div class= "card-deck" style= "display:flex">
+    <% @groups.each do |group| %>
+        <div class = "d-inline-block">
+            <div class="card-body">
+                <h5 class="card-title"><%= group.name %></h5>
+            </div>
+        </div>
+    <% end %>
+</div>
