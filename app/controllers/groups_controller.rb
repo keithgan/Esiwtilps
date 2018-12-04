@@ -24,11 +24,20 @@ class GroupsController < ApplicationController
     
     def create
         @group = Group.new(group_params)
-
+        
         if @group.save
+            @membership = Membership.new
+            @membership.update(group_id: @group.id, user_id: current_user.id)
+            @membership.save
             flash[:success] = "#{@group.name} successfully created!"
             redirect_to welcome_index_path
         end
+    end
+
+    def my_groups
+        # @groups = Group.membership.where(user_id: current_user.id)
+        @user = current_user
+        @memberships = Membership.where(user_id: @user.id)
     end
 
     private
