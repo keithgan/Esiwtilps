@@ -1,0 +1,21 @@
+<h1> All my groups </h1>
+
+<%= form_with scope: @group, url:groups_path, method: :get, class:'form-inline my-2 my-lg-0', remote: true do |form| %>
+    <%= form.text_field :search, class: "form-control mr-sm-2" %>
+    <%= form.submit "search", class:"btn btn-outline-success my-2 my-sm-0" %>
+<% end %>
+
+<br/>
+
+<div class= "card-deck" style= "display:flex; justify-content: space-between">
+    <% @memberships.each do |membership| %>
+        <div class = "d-inline-block">
+            <div class="card border-dark mb-4 mr-2" style="width: 18rem; text-align:center">
+                <div class="card-body">
+                    <h5 class="card-title"><%= Group.find(membership.group_id).name %></h5>
+                    <%= link_to 'View Group', group_path(membership.group), class:"btn btn-primary" %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>
