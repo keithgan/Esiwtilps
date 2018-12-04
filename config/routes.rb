@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   
   get  'welcome/index'
   root 'welcome#index'
+
+  get "/:id/dashboard", to: 'users#dashboard', as: "dashboard"
   
   resources :users
   resources :groups

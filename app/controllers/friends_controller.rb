@@ -5,14 +5,16 @@ class FriendsController < ApplicationController
         if !Friend.find_by(user_id: current_user.id, friends_with: @user.id)
             friend = Friend.new(user_id: current_user.id, friends_with: @user.id)
             friend.save
-            redirect "/user/#{@user.id}"
+            redirect_to "/users/#{@user.id}"
         end
     end
 
     def unfriend
-        friend_to_delete = Friend.find_by(user_id: current_user.id)
+        @user = User.find(params[:id])
+
+        friend_to_delete = Friend.find_by(user_id: current_user.id, friends_with: @user.id)
         friend_to_delete.destroy
-        redirect "/user/#{current_user.id}"
+        redirect_to "/users/#{@user.id}"
     end
     
 end
