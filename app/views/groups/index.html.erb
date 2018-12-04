@@ -1,0 +1,15 @@
+<h1> All my groups </h1>
+
+<div class= "card-deck" style= "display:flex; justify-content: space-between">
+    <% @groups.each do |group| %>
+        <div class = "d-inline-block">
+            <div class="card border-dark mb-4 mr-2" style="width: 18rem; text-align:center">
+                <div class="card-body">
+                    <h5 class="card-title"><%= group.name%></h5>
+                    <h5 class="card-title"></h5>
+                    <%= link_to 'View Group', group_path(group), class:"btn btn-primary" %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>

@@ -1,0 +1,13 @@
+<div class= "card-deck" style= "display:flex; justify-content: space-between">
+    <% @friends.each do |friend| %>
+        <div class = "d-inline-block">
+            <div class="card border-dark mb-4 mr-2" style="width: 18rem; text-align:center">
+                <div class="card-body">
+                    <h5 class="card-title"><%= User.find(friend.friends_with).name%></h5>
+                    <h5 class="card-title"></h5>
+                    <%= link_to 'View profile', user_path(friend.friends_with), class:"btn btn-primary" %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>

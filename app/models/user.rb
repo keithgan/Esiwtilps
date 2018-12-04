@@ -9,6 +9,9 @@ class User < ApplicationRecord
                       length: { minimum: 2},
                       format: { with: VALID_EMAIL_REGEX}
 
+    include PgSearch
+    pg_search_scope :omniscope, :against => :name
+
     def self.create_with_auth_and_hash(authentication, auth_hash)
         user = self.create!(
             name: auth_hash["info"]["name"],

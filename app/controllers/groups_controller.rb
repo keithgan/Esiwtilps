@@ -1,7 +1,11 @@
 class GroupsController < ApplicationController
     
     def index
-        @groups = Group.all
+        @groups = Group.all.order(:name)
+        
+        if params[:search]
+            @groups = Group.omnisearch(params[:search])
+        end
     end
 
     def show

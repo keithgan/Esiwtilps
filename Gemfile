@@ -8,6 +8,7 @@ gem 'bcrypt'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'figaro'
+gem 'pg_search'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
