@@ -6,6 +6,11 @@ class GroupsController < ApplicationController
         if params[:search]
             @groups = Group.omnisearch(params[:search])
         end
+
+        respond_to do |format|
+            format.html
+            format.js
+        end
     end
 
     def show
