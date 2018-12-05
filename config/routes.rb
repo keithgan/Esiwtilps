@@ -16,9 +16,12 @@ Rails.application.routes.draw do
   
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
-  post '/user/:id/befriend', to: 'friends#befriend', as: "befriend"
-  post '/user/:id/unfriend', to: 'friends#unfriend', as: "unfriend"
+  post '/users/:id/befriend', to: 'friends#befriend', as: "befriend"
+  post '/users/:id/unfriend', to: 'friends#unfriend', as: "unfriend"
 
   get "/mygroups" => "groups#my_groups", as: "my_groups"
+
+  post '/groups/:id/join', to: 'memberships#join', as: "join"
+  post '/groups/:id/leave', to: 'memberships#leave', as: "leave"
 
 end

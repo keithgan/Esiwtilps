@@ -1,3 +1,16 @@
 <h1> <%= @group.name %> </h1>
 
 <h2> Group Members </h2>
+
+<div class= "card-deck" style= "display:flex; justify-content: space-between">
+    <% @memberships.each do |membership| %>
+        <div class = "d-inline-block">
+            <div class="card border-dark mb-4 mr-2" style="width: 18rem; text-align:center">
+                <div class="card-body">
+                    <h5 class="card-title"><%= User.find(membership.user_id).name %></h5>
+                    <%= link_to 'View Profile', user_path(membership.user), class:"btn btn-primary" %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>

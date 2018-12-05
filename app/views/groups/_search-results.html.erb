@@ -6,6 +6,24 @@
                     <h5 class="card-title"><%= group.name%></h5>
                     <h5 class="card-title"></h5>
                     <%= link_to 'View Group', group_path(group), class:"btn btn-primary" %>
+                    <div class= "d-inline-block">
+                    <% if !group.memberships.where(user_id: current_user.id, group_id: group.id).exists? %>
+                        <%= form_with url: join_path(group.id), method: :post do |form| %>
+                            <%= form.submit "Join Group", class: "btn btn-success" %>
+                        <% end %>
+                    <% else %>
+                        <%= form_with url: leave_path(group.id), method: :post do |form| %>
+                            <%= form.submit "Leave Group", class: "btn btn-danger" %>
+                        <% end %>
+                    <% end %>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <% group.memberships.each do |membership|%>
+                        <% if membership.user_id == current_user.id %>
+                            <p> You are a member of this group </p>
+                        <% end %>
+                    <% end %>
                 </div>
             </div>
         </div>
