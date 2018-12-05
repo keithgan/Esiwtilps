@@ -27,6 +27,16 @@ class BillsController < ApplicationController
         end
     end
 
+    def update
+        @bill = Bill.find(params[:id])
+
+        if @bill.update(bill_params)
+            redirect_to group_bill_path(@bill.group_id, @bill.id)
+        else
+            render 'edit'
+        end
+    end
+
     def destroy
         @group = Group.find(params[:group_id])
         @bill = Bill.find(params[:id])
