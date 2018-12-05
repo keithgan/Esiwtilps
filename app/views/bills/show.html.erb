@@ -1,0 +1,31 @@
+<% provide :head_tags do %>
+  <meta name='turbolinks-visit-control' content='reload'>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      initMap(<%=@bill.latitude%>, <%=@bill.longitude%>)
+    });
+  </script>
+<% end %>
+
+<h1> Bill </h1>
+
+<%= link_to 'Edit Bill', edit_group_bill_path(@bill.group.id, @bill), class:"btn btn-primary" %>
+
+<p>
+    <div id="map" style="width:600px; height:400px"></div>
+</p>
+
+<script>
+    function initMap(lat, lng) {
+    var myCoords = new google.maps.LatLng(lat, lng);
+    var mapOptions = {
+    center: myCoords,
+    zoom: 14
+    };
+    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    var marker = new google.maps.Marker({
+        position: myCoords,
+        map: map
+    });
+}
+</script>

@@ -1,8 +1,16 @@
 class BillsController < ApplicationController
 
+    def show
+        @bill = Bill.find(params[:id])
+    end
+    
     def new
         @bill = Bill.new
         @group = Group.find(params[:group_id])
+    end
+
+    def edit
+        @bill = Bill.find(params[:id])        
     end
 
     def create
@@ -31,7 +39,10 @@ class BillsController < ApplicationController
     def bill_params
         params.require(:bill).permit(
             :title,
-            :amount
+            :amount,
+            :place,
+            :latitude,
+            :longitude
         )
     end
 end

@@ -26,5 +26,4 @@ Rails.application.routes.draw do
 
   post '/groups/:id/join', to: 'memberships#join', as: "join"
   post '/groups/:id/leave', to: 'memberships#leave', as: "leave"
-
 end
