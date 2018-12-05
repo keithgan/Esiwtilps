@@ -16,6 +16,7 @@ class GroupsController < ApplicationController
 
     def show
         @group = Group.find(params[:id])
+        @memberships = Membership.where(group_id: @group.id)
     end
 
     def new
