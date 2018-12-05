@@ -52,7 +52,7 @@
     </script>
 <% end %>
 
-<%= form_with scope: :bill, url: edit_group_bill_path(@bill.group.id, @bill), method: :post, local: true do |form| %>
+<%= form_with scope: :bill, url: group_bill_path(@bill.group.id, @bill), method: :patch, local: true do |form| %>
     <div class="form-group row">
       <div class="form-group col-md-6">
         <%= form.label :title %>
