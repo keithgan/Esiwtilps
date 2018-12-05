@@ -21,4 +21,7 @@ Rails.application.routes.draw do
 
   get "/mygroups" => "groups#my_groups", as: "my_groups"
 
+  post '/groups/join', to: 'membership#join', as: "join"
+  post '/groups/leave', to: 'membership#leave', as: "leave"
+
 end
