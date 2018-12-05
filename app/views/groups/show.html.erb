@@ -14,3 +14,21 @@
         </div>
     <% end %>
 </div>
+
+<h2> Bills </h2>
+
+<%= link_to "Add a Bill", new_group_bill_path(@group.id) %> <br/>
+
+<div class= "card-deck" style= "display:flex; justify-content: space-between">
+    <% @bills.each do |bill| %>
+        <div class = "d-inline-block">
+            <div class="card border-dark mb-4 mr-2" style="width: 18rem; text-align:center">
+                <div class="card-body">
+                    <h5 class="card-title"><%= bill.title %></h5>
+                    <h5 class="card-title">RM<%= bill.amount %></h5>
+                    <%= link_to 'Delete Bill', group_bill_path(bill.group.id, bill), method: :delete, data: { confirm: 'Are you sure?'}, class:"btn btn-danger" %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>

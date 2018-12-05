@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   get "/:id/dashboard", to: 'users#dashboard', as: "dashboard"
   
   resources :users
-  resources :groups
+
+  resources :groups do
+    resources :bills
+  end
   
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'

@@ -5,7 +5,7 @@ class User < ApplicationRecord
     has_many :memberships
     has_many :groups, dependent: :destroy
     has_many :friends, dependent: :destroy
-    has_many :bill, dependent: :destroy
+    belongs_to :bill, dependent: :destroy
     
     validates :email, uniqueness: true, 
                       length: { minimum: 2},
