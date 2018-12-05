@@ -27,7 +27,7 @@ class UsersController < ApplicationController
             flash[:success] = "Welcome to Esiwtilps!"
             redirect_to dashboard_path(@user)
         else
-            render new
+            redirect_to root_url
         end
     end
 
