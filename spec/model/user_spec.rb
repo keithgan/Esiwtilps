@@ -6,7 +6,6 @@ RSpec.describe User, type: :model do
     let(:improper_email)    { 'wwwabreger' }
     let(:password)  {'keith'}
 
-
     context "validation" do
         it { should validate_presence_of(:name) }
         it { should validate_presence_of(:email) }
@@ -22,16 +21,8 @@ RSpec.describe User, type: :model do
     end
 
     context "creates:" do
-		it "takes in one name" do
-			expect{ User.create(name: name) }.not_to raise_error
-        end
-        
         it "takes in one valid email" do
 			expect{ User.create(email: proper_email) }.not_to raise_error
-        end
-        
-        it "takes in one password" do
-			expect{ User.create(password: password) }.not_to raise_error
         end
         
         it "won't create an entry if invalid email is being supplied" do

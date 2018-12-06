@@ -1,17 +1,5 @@
 <h1> Dashboard </h1> 
 
-<%= form_with scope: @user, url:dashboard_path, method: :get, class:'form-inline my-2 my-lg-0' , local: true do |form| %>
-    <%= form.text_field :search, class: "form-control mr-sm-2" %>
-    <%= form.submit "search", class:"btn btn-outline-success my-2 my-sm-0" %>
-<% end %>
-
-<h2> Search Results </h2>
-<div id="search-results" > 
-    <%= render partial: '/users/search-results' %>
-</div>
-
-<br/>
-
 <h2> Friends list </h2>
 <p> Friends: <%= Friend.where(user_id: @user.id).count %> </p>
 

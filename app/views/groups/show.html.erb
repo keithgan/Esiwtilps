@@ -1,4 +1,5 @@
 <h1> <%= @group.name %> </h1>
+<%= link_to 'Delete Group', group_path(@group), method: :delete, data: { confirm: 'Are you sure?'}, class:"btn btn-danger" %> 
 
 <h2> Group Members </h2>
 

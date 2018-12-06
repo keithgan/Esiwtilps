@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-feature "Esiwtilps", :type => :feature do
-    scenario "User sign up" do
+feature "Sign Up" do
+    scenario "When a user tries to sign up" do
         visit "/"
         click_on "Sign Up"
         expect(page).to have_text("Sign Up")

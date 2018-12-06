@@ -2,7 +2,7 @@ class User < ApplicationRecord
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     has_secure_password
     has_many :authentications, dependent: :destroy
-    has_many :memberships
+    has_many :memberships, dependent: :destroy
     has_many :friends, dependent: :destroy
     # belongs_to :bill, dependent: :destroy
 
@@ -14,7 +14,7 @@ class User < ApplicationRecord
     validates :password, presence: true    
 
     include PgSearch
-    pg_search_scope :omniscope, :against => :name
+    pg_search_scope :omnisearch, :against => :name
 
     def self.create_with_auth_and_hash(authentication, auth_hash)
         user = self.create!(

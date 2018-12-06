@@ -6,6 +6,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rspec'
+require 'shoulda/matchers'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -61,8 +62,6 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
-
-  require 'shoulda/matchers'
 
   Shoulda::Matchers.configure do |config|
     config.integrate do |with|
