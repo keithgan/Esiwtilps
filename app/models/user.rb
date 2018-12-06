@@ -3,7 +3,6 @@ class User < ApplicationRecord
     has_secure_password
     has_many :authentications, dependent: :destroy
     has_many :memberships
-    has_many :groups, dependent: :destroy
     has_many :friends, dependent: :destroy
     # belongs_to :bill, dependent: :destroy
 

@@ -27,6 +27,7 @@ class UsersController < ApplicationController
             flash[:success] = "Welcome to Esiwtilps!"
             redirect_to dashboard_path(@user)
         else
+            flash[:warning] = @user.errors.full_messages
             render 'new'
         end
     end

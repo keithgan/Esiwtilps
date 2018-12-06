@@ -8,11 +8,17 @@ RSpec.describe User, type: :model do
 
 
     context "validation" do
-        it { is_expected.to validate_presence_of(:name) }
-        it { is_expected.to validate_presence_of(:email) }
-        it { is_expected.to validate_presence_of(:password) }
-        it { is_expected.to allow_value(proper_email).for(:email) }
-        it { is_expected.not_to allow_value(improper_email).for(:email)  }
+        it { should validate_presence_of(:name) }
+        it { should validate_presence_of(:email) }
+        it { should validate_presence_of(:password) }
+        it { should allow_value(proper_email).for(:email) }
+        it { should_not allow_value(improper_email).for(:email)  }
+    end
+
+    context "association" do
+       it { should have_many(:authentications) }
+       it { should have_many(:memberships) }
+       it { should have_many(:friends) }
     end
 
     context "creates:" do
