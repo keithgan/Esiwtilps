@@ -14,6 +14,11 @@
                 <div class="card-body">
                     <h5 class="card-title"><%= Group.find(membership.group_id).name %></h5>
                     <%= link_to 'View Group', group_path(membership.group), class:"btn btn-primary" %>
+                    <div class= "d-inline-block">
+                    <%= form_with url: leave_path(membership.group.id), method: :post do |form| %>
+                        <%= form.submit "Leave Group", class: "btn btn-danger" %>
+                    <% end %>
+                    </div>
                 </div>
             </div>
         </div>

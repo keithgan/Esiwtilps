@@ -1,4 +1,5 @@
 <h1> <%= @group.name %> </h1>
+<%= link_to 'Delete Group', group_path(@group), method: :delete, data: { confirm: 'Are you sure?'}, class:"btn btn-danger" %> 
 
 <h2> Group Members </h2>
 
@@ -25,7 +26,10 @@
             <div class="card border-dark mb-4 mr-2" style="width: 18rem; text-align:center">
                 <div class="card-body">
                     <h5 class="card-title"><%= bill.title %></h5>
-                    <h5 class="card-title">RM<%= bill.amount %></h5>
+                    <h5 class="card-title">Amount: RM<%= bill.amount %></h5>
+                    <h5 class="card-title">Location: <%= bill.place %></h5>
+                    <h5 class="card-title">Date: <%= bill.created_at.strftime("%d/%m/%Y") %></h5>
+                    <h5 class="card-title">Time: <%= bill.created_at.strftime("%H:%M:%S") %></h5>
                     <%= link_to 'View Bill', group_bill_path(bill.group.id, bill), class:"btn btn-primary" %>
                     <%= link_to 'Delete Bill', group_bill_path(bill.group.id, bill), method: :delete, data: { confirm: 'Are you sure?'}, class:"btn btn-danger" %>
                 </div>

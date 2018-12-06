@@ -4,7 +4,7 @@ class MembershipsController < ApplicationController
 
         membership = Membership.new(user_id: current_user.id, group_id: @group.id)
         membership.save
-        redirect_to groups_path
+        redirect_to my_groups_path
     end
 
     def leave
@@ -12,6 +12,6 @@ class MembershipsController < ApplicationController
 
         membership_to_delete = Membership.find_by(user_id: current_user.id, group_id: @group.id)
         membership_to_delete.destroy
-        redirect_to groups_path
+        redirect_to my_groups_path
     end
 end

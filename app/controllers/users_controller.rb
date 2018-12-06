@@ -4,11 +4,6 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         @friends = Friend.where(user_id: @user.id)
         @groups = Group.all
-
-        @users = User.all.order(:name)
-        if params[:search]
-            @users = User.omniscope[params[:search]]
-        end
     end
 
     def show
@@ -27,7 +22,8 @@ class UsersController < ApplicationController
             flash[:success] = "Welcome to Esiwtilps!"
             redirect_to dashboard_path(@user)
         else
-            redirect_to root_url
+            flash[:warning] = @user.errors.full_messages
+            render 'new'
         end
     end
 

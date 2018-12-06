@@ -9,6 +9,29 @@
 
 <h1> Bill </h1>
 
+<table style="width:100%">
+  <tr>
+    <td><strong>Title:</strong></td>
+    <td><%=@bill.title%>
+  </tr>
+  <tr>
+    <td><strong>Amount:</strong></td>
+    <td>RM <%=@bill.amount%></td>
+  </tr>
+  <tr>
+    <td><strong>Location:</strong></td>
+    <td>@bill.place</td>
+  </tr>
+  <tr>
+    <td><strong>Date:</strong></td>
+    <td><%=@bill.created_at.strftime("%d/%m/%Y")%></td>
+  </tr>
+  <tr>
+    <td><strong>Time:</strong></td>
+    <td><%=@bill.created_at.strftime("%H:%M:%S")%></td>
+  </tr>
+</table>
+
 <%= link_to 'Edit Bill', edit_group_bill_path(@bill.group.id, @bill), class:"btn btn-primary" %>
 <p>
     <div id="map" style="width:600px; height:400px"></div>
