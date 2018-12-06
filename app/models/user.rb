@@ -6,10 +6,13 @@ class User < ApplicationRecord
     has_many :groups, dependent: :destroy
     has_many :friends, dependent: :destroy
     # belongs_to :bill, dependent: :destroy
-    
-    validates :email, uniqueness: true, 
+
+    validates :name, presence: true
+    validates :email, presence: true,
+                      uniqueness: true, 
                       length: { minimum: 2},
                       format: { with: VALID_EMAIL_REGEX}
+    validates :password, presence: true    
 
     include PgSearch
     pg_search_scope :omniscope, :against => :name
@@ -19,7 +22,6 @@ class User < ApplicationRecord
             name: auth_hash["info"]["name"],
             email: auth_hash["info"]["email"],
             phone_number: auth_hash["info"]["phone_number"],
-            email: auth_hash["info"]["email"],
             password: SecureRandom.hex(10)
         )
         user.authentications << authentication
