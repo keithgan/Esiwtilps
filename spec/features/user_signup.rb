@@ -11,8 +11,6 @@ feature "Sign Up" do
         fill_in "Password", :with => "keith"
         click_button "Sign me up!"
 
-        page.html
-
         expect(page).to have_text("Welcome to Esiwtilps!")
     end
 end
